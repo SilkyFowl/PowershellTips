@@ -40,10 +40,10 @@ Describe "Subscribe FileSystemWatcher's events" {
             $action = {
                 Get-Variable -Scope 0  | Start-ThreadJob {
                     "event fired."
-                    $input | Tee-Object Testdrive:/changed.log -Append | Out-Host
-                    Get-Variable -Scope 0 | Tee-Object "$TestDrive/changed.log" -Append | Out-Host
-                    $sender | Format-List  | Tee-Object "$TestDrive/changed.log" -Append | Out-Host
-                    $eventArgs | Format-List  | Tee-Object "$TestDrive/changed.log" -Append | Out-Host
+                    $input | Tee-Object "$using:TestDrive/changed.log" -Append | Out-Host
+                    Get-Variable -Scope 0 | Tee-Object "$using:TestDrive/changed.log" -Append | Out-Host
+                    $sender | Format-List  | Tee-Object "$using:TestDrive/changed.log" -Append | Out-Host
+                    $eventArgs | Format-List  | Tee-Object "$using:TestDrive/changed.log" -Append | Out-Host
                 } -Name watcherJob
             }
             Register-ObjectEvent $watcher -EventName Changed -SourceIdentifier changedEvent -Action $action
