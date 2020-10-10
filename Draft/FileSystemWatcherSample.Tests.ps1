@@ -1,23 +1,23 @@
 ﻿using namespace System.IO
 
-Describe "イベントを購読" {
+Describe "Subscribe FileSystemWatcher's events" {
     Context "Changed" {
         BeforeAll {
             $watcher = [FileSystemWatcher]::new($PWD)
         }
-        It "直接処理する" -Skip {
+        It "By ScriptBlock" -Skip {
             $action = {
                 Get-Variable -Scope 0 | Format-List | Out-Host
             }
             Register-ObjectEvent $watcher -EventName Changed -SourceIdentifier changedEvent -Action $action
         }
-        It "新しくイベントを発行する" -Skip {
+        It "Create PsEvent" -Skip {
             $action = {
                 New-Event -SourceID "PowerShell.FileChanged" -Sender $sender -EventArguments $event > $null
             }
             Register-ObjectEvent $watcher -EventName Changed -SourceIdentifier changedEvent -Action $action
         }
-        It "Thread Jobを発行する" -Skip {
+        It "Start Thread Job" -Skip {
             $action = {
                 # Get-Variable -Scope 0  | Start-ThreadJob { "event fired."; $input } -Name "watcherJob$(New-Guid)"
             }
