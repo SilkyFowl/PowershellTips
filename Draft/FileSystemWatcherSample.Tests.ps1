@@ -5,7 +5,7 @@ Describe "Subscribe FileSystemWatcher's events" {
         BeforeEach {
             1..5 | Set-Content Testdrive:/test.txt
             $watcher = [FileSystemWatcher]::new((Convert-Path Testdrive:))
-            $watcher.Filter="*.txt"
+            $watcher.Filter = "*.txt"
 
             $beforeErrorCount = $Error.Count
         }
@@ -38,10 +38,15 @@ Describe "Subscribe FileSystemWatcher's events" {
         }
         It "Start Thread Job" {
             $action = {
-                Get-Variable -Scope 0  | Start-ThreadJob {
+                @{
+                    CurrentJob     = get-job watcherJob -ErrorAction SilentlyContinue
+                    EventScopeVars = Get-Variable -Scope 0
+                } | Start-ThreadJob {
                     "event fired."
-                    Get-Job watcherJob | Wait-Job
-                    $input | Tee-Object "$using:TestDrive/watcherJob.log" -Append | Out-Host
+                    if ($job = $input.CurrentJob) {
+                        $job | Wait-Job > $null
+                    }
+                    $input.EventScopeVars | Tee-Object "$using:TestDrive/watcherJob.log" -Append | Out-Host
                     Get-Variable -Scope 0 | Tee-Object "$using:TestDrive/watcherJob.log" -Append | Out-Host
                     $sender | Format-List  | Tee-Object "$using:TestDrive/watcherJob.log" -Append | Out-Host
                     $eventArgs | Format-List  | Tee-Object "$using:TestDrive/watcherJob.log" -Append | Out-Host

@@ -1,24 +1,18 @@
 ﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
-<test-results xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="nunit_schema_2.5.xsd" name="Pester" total="3" errors="0" failures="1" not-run="0" inconclusive="0" ignored="0" skipped="0" invalid="0" date="2020-10-10" time="20:17:47">
+<test-results xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="nunit_schema_2.5.xsd" name="Pester" total="0" errors="0" failures="0" not-run="3" inconclusive="0" ignored="0" skipped="0" invalid="0" date="2020-10-10" time="23:05:57">
   <environment user-domain="Z-CANVAS" cwd="C:\Users\terit\Repos\PowershellTips\Draft" user="terit" clr-version="Unknown" platform="Microsoft Windows 10 Pro|C:\WINDOWS|\Device\Harddisk0\Partition3" machine-name="Z-CANVAS" os-version="10.0.19041" nunit-version="2.5.8.0" />
   <culture-info current-culture="ja-JP" current-uiculture="ja-JP" />
-  <test-suite type="TestFixture" name="Pester" executed="True" result="Failure" success="False" time="6.8899" asserts="0" description="Pester">
+  <test-suite type="TestFixture" name="Pester" executed="True" result="Success" success="True" time="0.1298" asserts="0" description="Pester">
     <results>
-      <test-suite type="TestFixture" name="C:\Users\terit\Repos\PowershellTips\Draft\FileSystemWatcherSample.Tests.ps1" executed="True" result="Failure" success="False" time="6.8899" asserts="0" description="C:\Users\terit\Repos\PowershellTips\Draft\FileSystemWatcherSample.Tests.ps1">
+      <test-suite type="TestFixture" name="C:\Users\terit\Repos\PowershellTips\Draft\FileSystemWatcherSample.Tests.ps1" executed="True" result="Success" success="True" time="0.1298" asserts="0" description="C:\Users\terit\Repos\PowershellTips\Draft\FileSystemWatcherSample.Tests.ps1">
         <results>
-          <test-suite type="TestFixture" name="Subscribe FileSystemWatcher's events" executed="True" result="Failure" success="False" time="4.8906" asserts="0" description="Subscribe FileSystemWatcher's events">
+          <test-suite type="TestFixture" name="Subscribe FileSystemWatcher's events" executed="True" result="Success" success="True" time="0" asserts="0" description="Subscribe FileSystemWatcher's events">
             <results>
-              <test-suite type="TestFixture" name="Subscribe FileSystemWatcher's events.Changed" executed="True" result="Failure" success="False" time="3.1225" asserts="0" description="Subscribe FileSystemWatcher's events.Changed">
+              <test-suite type="TestFixture" name="Subscribe FileSystemWatcher's events.Changed" executed="True" result="Success" success="True" time="0" asserts="0" description="Subscribe FileSystemWatcher's events.Changed">
                 <results>
-                  <test-case description="By ScriptBlock" name="Subscribe FileSystemWatcher's events.Changed.By ScriptBlock" time="0.5925" asserts="0" success="True" result="Success" executed="True" />
-                  <test-case description="Create PsEvent" name="Subscribe FileSystemWatcher's events.Changed.Create PsEvent" time="0.1608" asserts="0" success="True" result="Success" executed="True" />
-                  <test-case description="Start Thread Job" name="Subscribe FileSystemWatcher's events.Changed.Start Thread Job" time="0.6913" asserts="0" success="False" result="Failure" executed="True">
-                    <failure>
-                      <message>Expected 1, but got 5.
-at $Error.Count | should -be $beforeErrorCount, C:\Users\terit\Repos\PowershellTips\Draft\FileSystemWatcherSample.Tests.ps1:53</message>
-                      <stack-trace>at &lt;ScriptBlock&gt;, C:\Users\terit\Repos\PowershellTips\Draft\FileSystemWatcherSample.Tests.ps1:53</stack-trace>
-                    </failure>
-                  </test-case>
+                  <test-case description="" name="" time="0" asserts="0" success="False" />
+                  <test-case description="" name="" time="0" asserts="0" success="False" />
+                  <test-case description="" name="" time="0" asserts="0" success="False" />
                 </results>
               </test-suite>
             </results>
