@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<test-results xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="nunit_schema_2.5.xsd" name="Pester" total="5" errors="0" failures="0" not-run="0" inconclusive="0" ignored="0" skipped="0" invalid="0" date="2020-10-10" time="23:12:04">
+  <environment user-domain="Z-CANVAS" cwd="C:\Users\terit\Repos\PowershellTips\Draft" user="terit" clr-version="Unknown" platform="Microsoft Windows 10 Pro|C:\WINDOWS|\Device\Harddisk0\Partition3" machine-name="Z-CANVAS" os-version="10.0.19041" nunit-version="2.5.8.0" />
+  <culture-info current-culture="ja-JP" current-uiculture="ja-JP" />
+  <test-suite type="TestFixture" name="Pester" executed="True" result="Success" success="True" time="11.6034" asserts="0" description="Pester">
+    <results>
+      <test-suite type="TestFixture" name="C:\Users\terit\Repos\PowershellTips\Draft\FileSystemWatcherSample.Tests.ps1" executed="True" result="Success" success="True" time="7.4146" asserts="0" description="C:\Users\terit\Repos\PowershellTips\Draft\FileSystemWatcherSample.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Subscribe FileSystemWatcher's events" executed="True" result="Success" success="True" time="5.648" asserts="0" description="Subscribe FileSystemWatcher's events">
+            <results>
+              <test-suite type="TestFixture" name="Subscribe FileSystemWatcher's events.Changed" executed="True" result="Success" success="True" time="3.3758" asserts="0" description="Subscribe FileSystemWatcher's events.Changed">
+                <results>
+                  <test-case description="By ScriptBlock" name="Subscribe FileSystemWatcher's events.Changed.By ScriptBlock" time="0.4223" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Create PsEvent" name="Subscribe FileSystemWatcher's events.Changed.Create PsEvent" time="0.242" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Start Thread Job" name="Subscribe FileSystemWatcher's events.Changed.Start Thread Job" time="0.4298" asserts="0" success="True" result="Success" executed="True" />
+                </results>
+              </test-suite>
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\Users\terit\Repos\PowershellTips\PesterSample\Simple.Tests.ps1" executed="True" result="Success" success="True" time="4.1888" asserts="0" description="C:\Users\terit\Repos\PowershellTips\PesterSample\Simple.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="d" executed="True" result="Success" success="True" time="2.4824" asserts="0" description="d">
+            <results>
+              <test-case description="i" name="d.i" time="0.0213" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="j" name="d.j" time="0.0165" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+    </results>
+  </test-suite>
+</test-results>

@@ -1,4 +1,6 @@
 {
     "cSpell.language": "en",
-    "powershell.pester.useLegacyCodeLens": false
+    "powershell.pester.useLegacyCodeLens": false,
+    "testExplorer.addToEditorContextMenu": true,
+    "pesterExplorer.testFilePath": "TestExplorerResults.xml"
 }
