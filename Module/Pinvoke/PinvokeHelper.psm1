@@ -45,6 +45,21 @@ class TypeCompletionAttribute : ArgumentCompleterAttribute, IArgumentCompleterFa
 
 #endregion
 
+function New-TypeBuilder {
+    param (
+        [string]$TypeName
+    )
+    # アセンブリ、モジュール、型ビルダー定義
+    $assemblyName = [AssemblyName]@{
+        Name    = $Script:DynamicClassAssemblyName
+        Version = [version]::new(1, 0, 0, [Interlocked]::Increment([ref]$Script:counter))
+    }
+        
+    $assembly = [AssemblyBuilder]::DefineDynamicAssembly($assemblyName, 'RunAndCollect')
+    $module = $assembly.DefineDynamicModule($Script:DynamicClassAssemblyName)
+    $module.DefineType($TypeName, 'Public, Class')
+}
+
 function Add-PinvokeType {
     param (
         [string]$TypeName,
@@ -59,15 +74,7 @@ function Add-PinvokeType {
         [CharSet]$CharSet = [CharSet]::Auto
     )
 
-    # アセンブリ、モジュール、型ビルダー定義
-    $assemblyName = [AssemblyName]@{
-        Name    = $Script:DynamicClassAssemblyName
-        Version = [version]::new(1, 0, 0, [Interlocked]::Increment([ref]$Script:counter))
-    }
-    
-    $assembly = [AssemblyBuilder]::DefineDynamicAssembly($assemblyName, 'RunAndCollect')
-    $module = $assembly.DefineDynamicModule($Script:DynamicClassAssemblyName)
-    $typeBuilder = $module.DefineType($TypeName, 'Public, Class')
+    $typeBuilder = New-TypeBuilder $TypeName
 
     # メソッド定義
     $methodBuilder = $typeBuilder.DefinePInvokeMethod(
