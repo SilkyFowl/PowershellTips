@@ -34,10 +34,58 @@ Describe "Create PInvoke" {
                     [ushort]$Milsecond
                 }
                 $time = [SystemTime]::new()
-                $m = Add-PinvokeType M GetSystemTime GetSystemTime kernel32.dll void  ([SystemTime]) Winapi Unicode
-                $m::GetSystemTime($time)
+                $m = Add-PinvokeType M GetSystemTime GetSystemTime kernel32.dll void  ([SystemTime].MakeByRefType()) Winapi Auto
+                $m::GetSystemTime([ref]$time)
+                10
             } | Should -Throw '*"The invoked member is not supported in a dynamic assembly."*'
         }
 
+        It "should work" {
+            {
+               $SystemTime= Add-Type @'
+using System;
+using System.Linq;
+using System.Runtime.InteropServices;
+
+[StructLayout(LayoutKind.Sequential)]
+public class SystemTime
+{
+    public ushort Year;
+    public ushort Month;
+    public ushort DayOfWeek;
+    public ushort Day;
+    public ushort Hour;
+    public ushort Minute;
+    public ushort Second;
+    public ushort Milsecond;
+}
+'@ -PassThru
+
+                Add-Type @'
+using System;
+using System.Linq;
+using System.Runtime.InteropServices;
+
+public class Native
+{
+    [DllImport("kernel32.dll")]
+    public static extern void GetSystemTime(SystemTime systemTime);
+}
+'@ -ReferencedAssemblies $SystemTime.Assembly
+                $time = [SystemTime]::new()
+            } | Should -Throw '*"The invoked member is not supported in a dynamic assembly."*'
+        }
+
+    }
+
+    Context "GetEnvironmentVariableW" {
+        It "should work" {
+            $M = Add-PinvokeType M GetEnvironmentVariable GetEnvironmentVariableW kernel32.dll int string, System.Text.StringBuilder, int StdCall Unicode
+            [System.Text.StringBuilder]$sb = $null
+            $m.gettype()
+            $mi = $M.GetMethod('GetEnvironmentVariable')
+            $mi.Invoke($null, @(("COMPUTERNAME", $sb, 0)))
+            $M::GetEnvironmentVariable("COMPUTERNAME", $sb, 0)
+        }
     }
 }
